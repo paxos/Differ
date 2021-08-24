@@ -1,5 +1,8 @@
 name: Continuous Integration
 
+env:
+  DEVELOPER_DIR: "/Applications/Xcode_12.5.app/Contents/Developer"
+
 on:
   pull_request:
     types: [opened, synchronize, reopened]
@@ -9,13 +12,10 @@ on:
 jobs:
   xcode-build:
     name: Xcode Build
-    runs-on: macOS-latest
+    runs-on: macos-11
     strategy:
       matrix:
-        developer_dir: [
-          "/Applications/Xcode_12_beta.app",
-          "/Applications/Xcode_11.6.app"
-        ]
+
         destination: [
           "platform=macOS",
           "platform=iOS Simulator,name=iPhone 11",
@@ -26,19 +26,13 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - name: xcrun xcodebuild build
-      env:
-        DEVELOPER_DIR: "${{ matrix.developer_dir }}/Contents/Developer"
       run: xcrun xcodebuild build -destination "${{ matrix.destination }}" -project "Differ.xcodeproj" -scheme "Differ"
 
   xcode-test:
     name: Xcode Test
-    runs-on: macOS-latest
+    runs-on: macos-11
     strategy:
       matrix:
-        developer_dir: [
-          "/Applications/Xcode_12_beta.app",
-          "/Applications/Xcode_11.6.app"
-        ]
         destination: [
           "platform=macOS",
           "platform=iOS Simulator,name=iPhone 11",
@@ -48,36 +42,24 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - name: xcrun xcodebuild test
-      env:
-        DEVELOPER_DIR: "${{ matrix.developer_dir }}/Contents/Developer"
       run: |
         xcrun xcodebuild test -destination "${{ matrix.destination }}" -project "Differ.xcodeproj" -scheme "Differ"
         bash <(curl -s https://codecov.io/bash)
 
   swift-package-manager-test:
     name: Swift Package Manager
-    runs-on: macOS-latest
-    strategy:
-      matrix:
-        developer_dir: [
-          "/Applications/Xcode_12_beta.app",
-          "/Applications/Xcode_11.6.app"
-        ]
+    runs-on: macos-11
 
     steps:
     - uses: actions/checkout@v1
     - name: swift test
-      env:
-        DEVELOPER_DIR: "${{ matrix.developer_dir }}/Contents/Developer"
       run: swift test
 
   cocoapods-verify:
     name: CocoaPods
-    runs-on: macOS-latest
+    runs-on: macos-11
 
     steps:
     - uses: actions/checkout@v1
     - name: Lint CocoaPods specification
-      env:
-        DEVELOPER_DIR: "/Applications/Xcode_12_beta.app/Contents/Developer"
       run: pod lib lint
