@@ -102,7 +102,7 @@ collectionView.animateItemAndSectionChanges(oldData: old, newData: new, updateDa
 You can also calculate `diff` separately and use it later:
 ```swift
 // Generate the difference first
-let diff = dataSource.diff(newDataSource)
+let diff = dataSource.extendedDiff(newDataSource)
 
 // This will apply changes to dataSource.
 let dataSourceUpdate = { self.dataSource = newDataSource }
