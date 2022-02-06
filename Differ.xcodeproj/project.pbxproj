@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6F5641E927B086E5009F0F6F /* ExtendedPatchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F5641E827B086E5009F0F6F /* ExtendedPatchTests.swift */; };
 		900E03A41DE7C6C60033A799 /* Differ.h in Headers */ = {isa = PBXBuildFile; fileRef = C92178BB1CD0023E004642C7 /* Differ.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		900E03A51DE7C6D60033A799 /* Differ.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9EE87161CCFCA83006BD90E /* Differ.framework */; };
 		90382F122075D23E006EFFBF /* NestedBatchUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90382F112075D23E006EFFBF /* NestedBatchUpdate.swift */; };
@@ -44,6 +45,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6F5641E827B086E5009F0F6F /* ExtendedPatchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtendedPatchTests.swift; sourceTree = "<group>"; };
 		900E039F1DE7C3370033A799 /* Universal-Framework-Target.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Universal-Framework-Target.xcconfig"; sourceTree = "<group>"; };
 		900E03A01DE7C3370033A799 /* Universal-Target-Base.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Universal-Target-Base.xcconfig"; sourceTree = "<group>"; };
 		900E03AF1DE7F1E80033A799 /* Deployment-Targets.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Deployment-Targets.xcconfig"; sourceTree = "<group>"; };
@@ -138,6 +140,7 @@
 				C921BF701E15448300747566 /* NestedExtendedDiffTests.swift */,
 				C991189D1DDB4F1100067A60 /* PatchApplyTests.swift */,
 				C9C924791DBB97130006ACC4 /* PatchSortTests.swift */,
+				6F5641E827B086E5009F0F6F /* ExtendedPatchTests.swift */,
 			);
 			path = DifferTests;
 			sourceTree = "<group>";
@@ -223,6 +226,9 @@
 			dependencies = (
 			);
 			name = Differ;
+			packageProductDependencies = (
+				6F04634427B0727E0062425C /* FastDiff */,
+			);
 			productName = Diff.swift;
 			productReference = C9EE87161CCFCA83006BD90E /* Differ.framework */;
 			productType = "com.apple.product-type.framework";
@@ -257,6 +263,9 @@
 				en,
 			);
 			mainGroup = C9EE870C1CCFCA83006BD90E;
+			packageReferences = (
+				6F04634327B0727E0062425C /* XCRemoteSwiftPackageReference "FastDiff" */,
+			);
 			productRefGroup = C9EE87171CCFCA83006BD90E /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -279,6 +288,7 @@
 				C921BF711E15448300747566 /* NestedExtendedDiffTests.swift in Sources */,
 				C90CD7191DFB43C600BE9114 /* NestedDiffTests.swift in Sources */,
 				E2F1C8561E3A14DF00FBE786 /* BatchUpdateTests.swift in Sources */,
+				6F5641E927B086E5009F0F6F /* ExtendedPatchTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -496,6 +506,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		6F04634327B0727E0062425C /* XCRemoteSwiftPackageReference "FastDiff" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kandelvijaya/FastDiff.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		6F04634427B0727E0062425C /* FastDiff */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6F04634327B0727E0062425C /* XCRemoteSwiftPackageReference "FastDiff" */;
+			productName = FastDiff;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = C9EE870D1CCFCA83006BD90E /* Project object */;
 }
