@@ -1,11 +1,3 @@
-//
-//  ExtendedPatchTests.swift
-//  DifferTests
-//
-//  Created by Patrick Dinger on 2/6/22.
-//  Copyright © 2022 Differ Project. All rights reserved.
-//
-
 import XCTest
 import Differ
 
